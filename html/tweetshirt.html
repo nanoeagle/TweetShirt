@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TweetShirt</title>
+    <link rel="stylesheet" href="../css/tweetshirt.css">
+    <script src="../js/supportMethods.js" async></script>
+    <script src="../js/drawingMethods.js" async></script>
+    <script src="../js/tweetshirt.js" defer></script>
+  </head>
+  <body>
+    <canvas id="tshirtCanvas" width="600" height="200">
+      <p>Hey you, yes YOU, upgrade your browser!!</p>
+    </canvas>
+    <form>
+      <p>
+        <label for="backgroundColor">Select background color:</label>
+        <input type="color" id="backgroundColor" value="#ffffff">
+      </p>
+      <p>
+        <label for="pattern">Choose a pattern:</label>
+        <select id="pattern">
+          <option value="none" selected>None</option>
+          <option value="circles">Circles</option>
+          <option value="rectangles">Rectangles</option>
+          <option value="squares">Squares</option>
+          <option value="triangles">Triangles</option>
+        </select>
+      </p>
+      <p>
+        <label for="patternColor">Select the pattern color:</label>
+        <input type="color" id="patternColor" value="#add8e6">
+      </p>
+      <p>
+        <label for="textColor">Select text color:</label>
+        <input type="color" id="textColor">
+      </p>
+      <p>
+        <label for="tweets">Pick a tweet:</label>
+        <!-- try <select/> and <select></select> -->
+        <select id="tweets">
+        </select>
+      </p>
+      <p>
+        <input type="button" id="previewButton" value="Preview">
+      </p>
+    </form>
+  </body>
+</html>
