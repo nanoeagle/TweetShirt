@@ -68,3 +68,41 @@ function drawTriangle(canvas, startingPoint) {
         document.getElementById("patternColor").value;;
     canvasContext.fill();
 }
+
+function drawText(canvas) {
+    var canvasContext = canvas.getContext("2d");
+    canvasContext.fillStyle = 
+        document.getElementById("textColor").value;
+
+    var topTextInfo = {
+        font: "bold 1em sans-serif",
+        align: "left",
+        content: "I saw this tweet",
+        x: 20, y: 40
+    };
+    var centerTextInfo = {
+        font: "italic 1.2em serif",
+        align: "center",
+        content: document.getElementById("tweets").value,
+        x: 400, y: 150, maxWidth: 720
+    };
+    var bottomTextInfo = {
+        font: "bold 1em sans-serif",
+        align: "right",
+        content: "and all I got was this lousy t-shirt!",
+        x: canvas.width - 20, y: canvas.height - 40
+    };
+    [topTextInfo, centerTextInfo, bottomTextInfo].forEach(textInfo => {
+        fillText(canvasContext, textInfo);
+    });
+}
+
+function fillText(canvasContext, textInfo) {
+    canvasContext.font = textInfo.font;
+    canvasContext.textAlign = textInfo.align;
+    canvasContext.fillText(
+        textInfo.content, 
+        textInfo.x, textInfo.y,
+        textInfo.maxWidth
+    );
+}
