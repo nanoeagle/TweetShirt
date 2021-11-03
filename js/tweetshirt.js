@@ -9,8 +9,36 @@ var tweets = [
 
 window.onload = function() {
     updateTweets(tweets);
+    makeImageFromCanvasIfClicked();
     var previewBtn = document.getElementById("previewButton");
     previewBtn.onclick = previewBtnHandler;
+}
+
+function updateTweets(tweets) {
+    var tweetSelection = document.getElementById("tweets");
+    for (var i = 0; i < tweets.length; i++) {
+        addTweetOptionTo(tweetSelection, tweets[i])
+    }
+    tweetSelection.selectedIndex = 0;
+}
+
+function addTweetOptionTo(tweetSelection, tweet) {
+    var option = document.createElement("option");
+    option.text = tweet;
+    option.value = tweet;
+    tweetSelection.add(option);
+}
+
+// The project may must be run on a web server 
+// to make this feature work.
+function makeImageFromCanvasIfClicked() {
+    var canvas = document.getElementById("tshirtCanvas");
+    canvas.onclick = function () {
+        var imageIframe = 
+            '<iframe title="The image on the shirt" src="' + canvas.toDataURL() + 
+            '" frameborder="0" width="100%" height="100%"></iframe>';
+        window.open().document.write(imageIframe);
+    };
 }
 
 function previewBtnHandler() {
@@ -18,6 +46,7 @@ function previewBtnHandler() {
     fillBackgroundWithSpecifiedColorOn(tshirtCanvas);
     drawPatternIfSpecifiedOn(tshirtCanvas);
     drawText(tshirtCanvas);
+    drawIcon(tshirtCanvas);
 }
 
 function drawPatternIfSpecifiedOn(canvas) {
@@ -47,19 +76,4 @@ function determineDrawingMethodBasedOnPatternIfSpecified() {
         default: // none 
             return null;
     }
-}
-
-function updateTweets(tweets) {
-    var tweetSelection = document.getElementById("tweets");
-    for (var i = 0; i < tweets.length; i++) {
-        addTweetOptionTo(tweetSelection, tweets[i])
-    }
-    tweetSelection.selectedIndex = 0;
-}
-
-function addTweetOptionTo(tweetSelection, tweet) {
-    var option = document.createElement("option");
-    option.text = tweet;
-    option.value = tweet;
-    tweetSelection.add(option);
 }

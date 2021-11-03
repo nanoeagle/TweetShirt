@@ -106,3 +106,11 @@ function fillText(canvasContext, textInfo) {
         textInfo.maxWidth
     );
 }
+
+function drawIcon(canvas) {
+    var tweetBirdIcon = new Image();
+    tweetBirdIcon.src = "../images/tweetBird.png"
+    tweetBirdIcon.onload = function() {
+        canvas.getContext("2d").drawImage(tweetBirdIcon, 20, 200, 80, 80);
+    };
+}
